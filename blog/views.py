@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .forms import PostForm
@@ -23,7 +24,11 @@ def post_new(request):
         form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.user
+            if request.user is None:
+                post.author = settings.AUTH_USER_MODEL\
+                    .objects.get(username='guest')
+            else:
+                post.author = request.user
             post.publish()
             return redirect('blog:post_detail', pk=post.pk)
     else:
