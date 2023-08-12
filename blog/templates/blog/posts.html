@@ -14,7 +14,13 @@
             {% if post.published_date %}
             <time class="date" style="margin-right: 10px">{{ post.published_date }}</time>
             {% endif %}
+            {% if post.author.last_name %}
+            <h2>{{ post.title }} (автор: {{ post.author.first_name }} {{ post.author.last_name }})</h2>
+            {% elif post.author.first_name %}
+            <h2>{{ post.title }} (автор: {{ post.author.first_name }})</h2>
+            {% else %}
             <h2>{{ post.title }}</h2>
+            {% endif %}
             {% if post.is_cut %}
             <p>
                 {{ post.cut }}
