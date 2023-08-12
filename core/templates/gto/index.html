@@ -1,0 +1,12 @@
+{% extends "gto/master.html" %}
+{% block title %}ГТО{% endblock %}
+{% block body %}
+<ul>
+  <li><a href="/admin">Администрирование</a></li>
+  <li><a href="{% url 'gto:coaches' %}">Список тренеров</a></li>
+  <li><a href="{% url 'gto:add_coach' %}">Добавление тренера</a></li>
+  <li><a href="{% url 'gto:members' %}">Список занимающихся</a></li>
+  <li><a href="{% url 'gto:add_member' %}">Добавление занимающегося</a></li>
+  <li><a href="{% url 'gto:payments' %}">Оплата</a></li>
+</ul>
+{% endblock body %}

@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'gto/img/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/main.css' %}">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <header class="page-header">
+        <div class="container">
+            <a href="{% url 'blog:post_new' %}" class="top-menu">
+                {% include './svg/plus.svg' %}
+            </a>
+            <h1><a href="/">{% block extra_title %}{% endblock %}</a></h1>
+        </div>
+    </header>
+    <main class="container">{% block content %}{% endblock %}</main>
+</body>
+</html>

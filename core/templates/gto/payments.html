@@ -1,0 +1,33 @@
+{% extends "gto/master.html" %}
+{% block title %}ГТО{% endblock %}
+{% block extrahead %}
+<style>td:last-child {text-align: center}</style>
+{% endblock extrahead %}
+{% block body %}
+{% for assignment_name, records in groups.items %}
+<h1>{{ assignment_name }}</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Событие</th>
+            <th>Дата</th>
+            <th>Остаток тренировок</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for record in records %}
+        <tr>
+            <td>
+                {{ record.name }}
+                {% if record.payment_id is not None %}
+                (<a href="{% url 'gto:receipt' record.payment_id %}">фотография чека</a>)
+                {% endif %}
+            </td>
+            <td>{{ record.date }}</td>
+            <td>{{ record.counter }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endfor %}
+{% endblock body %}

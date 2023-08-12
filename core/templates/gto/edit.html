@@ -1,0 +1,16 @@
+{% extends "gto/master.html" %}
+{% block title %}ГТО - редактирование {{ verbose_name_genitive }}{% endblock %}
+{% block body %}
+  <form
+          action="{% url continuation entity_id %}"
+          enctype="multipart/form-data"
+          method="post">
+    {% csrf_token %}
+      <table>
+        <tbody>
+        {{ form }}
+        </tbody>
+      </table>
+    <input type="submit" value="Готово">
+  </form>
+{% endblock body %}

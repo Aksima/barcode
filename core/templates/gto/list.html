@@ -1,0 +1,13 @@
+{% extends "gto/master.html" %}
+{% block title %}ГТО - {{ verbose_name_plural }}{% endblock %}
+{% block body %}
+{% if entities %}
+<ul>
+  {% for entity in entities %}
+  <li><a href="{% url entity.MyMeta.qualified_name entity.account.id %}">{{ entity }}</a></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>В настоящий момент нет {{ verbose_name_plural_genitive }} в базе данных.</p>
+{% endif %}
+{% endblock body%}

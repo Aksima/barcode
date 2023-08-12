@@ -1,0 +1,14 @@
+{% extends "gto/master.html" %}
+{% block title %}Тренер {{ entity }}{% endblock %}
+{% block body %}
+<div><a href="{% url entity.MyMeta.qualified_edit_method entity.account.id %}">Редактировать</a></div>
+<img
+    width="{{ entity.image_width }}"
+    height="{{ entity.image_height }}"
+    src="{{ photo }}"
+    alt="{{ entity }}">
+{% if entity.about %}
+<h2>О себе</h2>
+<p>{{ entity.about }}</p>
+{% endif %}
+{% endblock body %}
