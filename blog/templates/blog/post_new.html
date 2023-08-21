@@ -1,14 +1,17 @@
 {% extends "blog/master.html" %}
-{% block title %}Блог Django Girls{% endblock %}
-{% block extra_title %}Блог Django Girls{% endblock %}
+{% block title %}ГТО - добавление новости{% endblock %}
 {% block content %}
 <div class="row">
   <div class="col">
-    <h2>Новый пост</h2>
-    <form method="POST" class="post-form">
+    <h1>Новый пост</h1>
+    <form method="POST" class="blog-post-form">
       {% csrf_token %}
       {{ form.as_p }}
-      <button type="submit" class="save btn btn-secondary">Save</button>
+      <button
+              type="submit"
+              class="btn btn-secondary blog-post-form-save">
+        Сохранить
+      </button>
     </form>
   </div>
 </div>

@@ -14,6 +14,21 @@ class Post(models.Model):
     created_date = models.DateTimeField('дата создания', default=timezone.now)
     published_date = models.DateTimeField('дата публикации', blank=True, null=True)
 
+    def get_title_with_author(self):
+        title = str(self.title)
+        first_name = getattr(self.author, 'first_name')
+        last_name = getattr(self.author, 'last_name')
+        if first_name:
+            if last_name:
+                return f'{title} (автор: {last_name} {first_name})'
+            return f'{title} (автор: {first_name})'
+        return title
+
+    title_with_author = property(
+        fget=get_title_with_author,
+        doc='Заголовок с указанием автора.'
+    )
+
     def get_is_cut(self):
         return getattr(self.text, 'count')('\n') != 0
 

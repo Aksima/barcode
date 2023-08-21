@@ -1,28 +1,25 @@
 {% extends "blog/master.html" %}
-{% block title %}Блог Django Girls{% endblock %}
-{% block extra_title %}Блог Django Girls{% endblock %}
+{% block title %}Комплекс «Готов к труду и обороне» (ГТО){% endblock %}
 {% block content %}
     <div class="row">
         <div class="col">
         {% for post in posts %}
-        <article class="post">
+        <article class="blog-post">
             {% if post.author == request_user %}
-            <aside class="actions" style="margin-left: 10px">
-                <a class="btn btn-secondary" href="{% url 'blog:post_edit' pk=post.pk %}">
+            <aside class="blog-post-actions" style="margin-left: 10px">
+                <a
+                    class="btn btn-secondary"
+                    href="{% url 'blog:post_edit' pk=post.pk %}">
                 {% include './svg/pencil-fill.svg' %}
                 </a>
             </aside>
             {% endif %}
             {% if post.published_date %}
-            <time class="date">{{ post.published_date }}</time>
+            <time class="blog-post-date">{{ post.published_date }}</time>
             {% endif %}
-            {% if post.author.last_name %}
-            <h2>{{ post.title }} (автор: {{ post.author.first_name }} {{ post.author.last_name }})</h2>
-            {% elif post.author.first_name %}
-            <h2>{{ post.title }} (автор: {{ post.author.first_name }})</h2>
-            {% else %}
-            <h2>{{ post.title }}</h2>
-            {% endif %}
+            <h1 class="blog-post-heading">
+                {{ post.title_with_author }}
+            </h1>
             {% if post.is_cut %}
             <p>
                 {{ post.cut }}
