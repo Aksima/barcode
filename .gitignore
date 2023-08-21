@@ -36,6 +36,7 @@ migrations/
 # Other
 README.txt
 db-backup.sql
+asgi.py
 manage.py
 
 # Static folder at project root

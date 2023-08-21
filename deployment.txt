@@ -1,0 +1,15 @@
+Дополнительные шаги по развертыванию:
+
+1) Установить зависимости из файла requirements.txt
+2) Выполнить в терминале следующие команды:
+(aev)> django-admin startproject gto .
+(aev)> python manage.py makemigrations core
+(aev)> python manage.py makemigrations blog
+(aev)> python manage.py migrate
+(aev)> python manage.py shell
+>>> from django.contrib.auth.models import User
+>>> from django.utils import timezone
+>>> guest = User(password='pbkdf2_sha256$600000$1mKGUazufyGkNpOpf6Kixf$0PGRjXHy86GECYXMFLoYDZMChPGPb8RXiLKcH2B8Phk=', last_login=None, is_superuser=False, username='guest', first_name='', last_name='', email='', is_staff=False, is_active=1, date_joined=timezone.now())
+>>> guest.save()
+>>> exit()
+(aev)> python manage.py runserver
