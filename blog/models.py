@@ -14,6 +14,10 @@ class Post(models.Model):
     created_date = models.DateTimeField('дата создания', default=timezone.now)
     published_date = models.DateTimeField('дата публикации', blank=True, null=True)
 
+    class Meta:
+        verbose_name = 'новость'
+        verbose_name_plural = 'новости'
+
     def get_title_with_author(self):
         title = str(self.title)
         first_name = getattr(self.author, 'first_name')

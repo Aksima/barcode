@@ -7,13 +7,60 @@
     <title>{% block title %}{% endblock %}</title>
     <link rel="icon" type="image/x-icon" href="{% static 'gto/img/favicon.png' %}">
     <link rel="stylesheet" href="{% static 'gto/css/bootstrap.min.css' %}">
+    <script src="{% static 'gto/js/bootstrap.bundle.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'gto/css/main.css' %}">
     {% block extra_head %}{% endblock %}
 </head>
 <body>
-    <header class="page-header">
-        <h1>ВФСК ГТО</h1>
+    <header>
+        <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+            <div class="container-fluid">
+<a class="navbar-brand" href="#">ВФСК ГТО</a>
+<button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#site_navigation"
+        aria-controls="site_navigation"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="site_navigation">
+    <ul class="navbar-nav">
+        <li class="nav-item dropdown" data-bs-theme="light">
+            <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                Тренеры
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'gto:coaches' %}">Просмотр</a></li>
+                <li><a class="dropdown-item" href="{% url 'gto:add_coach' %}">Добавление</a></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown" data-bs-theme="light">
+            <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                Занимающиеся
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'gto:members' %}">Просмотр</a></li>
+                <li><a class="dropdown-item" href="{% url 'gto:add_member' %}">Добавление</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+            </div>
+        </nav>
     </header>
-    <main class="container">{% block content %}{% endblock %}</main>
+    <main class="container">{% block body %}{% endblock %}</main>
 </body>
 </html>
