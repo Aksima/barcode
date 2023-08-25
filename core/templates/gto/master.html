@@ -56,6 +56,20 @@
                 <li><a class="dropdown-item" href="{% url 'gto:add_member' %}">Добавление</a></li>
             </ul>
         </li>
+        <li class="nav-item dropdown" data-bs-theme="light">
+            <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                Тренировки
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'gto:trainings' %}">Просмотр</a></li>
+                <li><a class="dropdown-item" href="{% url 'gto:add_training' %}">Добавление</a></li>
+            </ul>
+        </li>
     </ul>
 </div>
             </div>

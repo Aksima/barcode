@@ -34,7 +34,8 @@ urlpatterns = [
 ]
 for model in [
     models.Coach,
-    models.Member
+    models.Member,
+    models.Training
 ]:
     name = model.__name__
     snake_case_name = model.MyMeta.name
