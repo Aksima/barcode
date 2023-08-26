@@ -4,7 +4,7 @@
 {% if entities %}
 <ul>
   {% for entity in entities %}
-  <li><a href="{% url entity.MyMeta.qualified_name entity.account.id %}">{{ entity }}</a></li>
+  <li><a href="{% url entity.MyMeta.qualified_name entity.pk %}">{{ entity }}</a></li>
   {% endfor %}
 </ul>
 {% else %}

@@ -1,6 +1,8 @@
 import datetime
 from django.db import models
+from django.forms import ModelForm
 from .assignment import Assignment
+from . import with_names_for_methods
 
 GRADES = [
     ('A', 'отлично'),
@@ -63,6 +65,11 @@ class Training(models.Model):
         blank=True,
         null=True
     )
+    member_comment = models.TextField(
+        'комментарий занимающегося',
+        blank=True,
+        default=''
+    )
     member_approval = models.CharField(
         'статус тренировки (занимающийся)',
         max_length=1,
@@ -70,15 +77,36 @@ class Training(models.Model):
         blank=True,
         null=True
     )
-    member_comment = models.TextField(
-        'комментарий занимающегося',
-        blank=True,
-        default=''
-    )
 
     class Meta:
         verbose_name = 'тренировка'
         verbose_name_plural = 'тренировки'
 
+    @with_names_for_methods
+    class MyMeta:
+        name = 'training'
+        verbose_name_genitive = 'тренировки'
+        verbose_name_plural_genitive = 'тренировок'
+
     def __str__(self):
         return self.label
+
+
+class AddTrainingForm(ModelForm):
+    class Meta:
+        model = Training
+        fields = ['label', 'assignment', 'dt', 'duration', 'description']
+
+
+class EditTrainingForm(ModelForm):
+    class Meta:
+        model = Training
+        fields = [
+            'label',
+            'description',
+            'coach_approval',
+            'coach_notes',
+            'coach_grade',
+            'member_comment',
+            'member_approval'
+        ]
